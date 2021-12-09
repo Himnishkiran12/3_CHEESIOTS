@@ -1,19 +1,31 @@
-var img = ["https://th.bing.com/th/id/OIP.hJDVGDQ9W8bts_c0gJuQLQHaHC?pid=ImgDet&rs=1", "https://media.istockphoto.com/vectors/young-father-and-babby-vector-id886668274?k=6&m=886668274&s=612x612&w=0&h=F6FuAsMmZYhX69GG_TkCaFDRr8OlFhYamf9w1NhUqYg=", "https://assets.onlinelabels.com/images/clip-art/oksmith/Choose%20me-305090.png", "https://th.bing.com/th/id/OIP.vCRIHRUCEQ1AjX3v91ntwgHaHa?pid=ImgDet&rs=1"];
-var nam = ["My Family", "Shashikiran", "Himnishkiran[me]", "Ashwini Prabhu"];
+menu_list_array = ["Veg Margherita Pizza", "Chicken Tandoori Pizza", "Veg Supreme Pizza", "Paneer Tikka Pizza", "Deluxe Veggie Pizza", "Veg Extravaganza Pizza", "Mozzarella Cheese Pizza", "Provolone Cheese Pizza", "Veg Chicago Pizza", "New York-Style Pizza", "Sicilian Pizza", "Greek Pizza", "California Pizza", "Detroit Pizza", "St. Louis Pizza"];
 
-var i = 0;
-
-function update() {
-    i++;
-    var numbers_of_family_member_in_array = 3
-    if (i > numbers_of_family_member_in_array) {
-        i = 0;
+function getmenu() {
+    var htmldata = "";
+    menu_list_array.sort();
+    for (var i = 0; i < menu_list_array.length; i++) {
+        htmldata = htmldata + menu_list_array[i] + '<br>'
     }
-    //Debug the code to store list of images in updatedImage. Use images[i]
-    var updatedImage = img[i];
-    //Debug the code to store list of names in updatedName. Use names[i]
-    var updatedName = nam[i];
-    console.log(updatedName);
-    document.getElementById("family_member_image").src = updatedImage;
-    document.getElementById("family_member_name").innerHTML = updatedName;
+    document.getElementById("display_menu").innerHTML = htmldata;
+    //give the appropriate id name as display_menu 
+}
+
+function add_item() {
+    var htmldata;
+    var imgtags = '<img id="im1" src="pizzaImg.png">'
+    var item = document.getElementById("add_item").value;
+    menu_list_array.sort();
+    // use the sort function as - menu_list_array.sort();
+    htmldata = "";
+    for (var i = 0; i < menu_list_array.length; i++) {
+        htmldata = htmldata + imgtags + menu_list_array[i] + '<br>';
+    }
+    document.getElementById("display_addedmenu").innerHTML = htmldata;
+
+}
+
+function add_top() {
+    var item = document.getElementById("add_item").value;
+    menu_list_array.push(item);
+    add_item();
 }
